@@ -33,6 +33,7 @@ if GITHUB_ACTIONS_WINDOWS is False:
     import platform
     GITHUB_ACTIONS_WINDOWS = platform.system() == 'Windows'
 
+
 class DummyTransformer:
     def __getitem__(self, bow):
         if len(next(iter(bow))) == 2:
