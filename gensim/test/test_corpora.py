@@ -28,7 +28,10 @@ from gensim.test.utils import datapath, get_tmpfile, common_corpus
 
 
 GITHUB_ACTIONS_WINDOWS = os.environ.get('RUNNER_OS') == 'Windows'
-
+# fix without github
+if GITHUB_ACTIONS_WINDOWS is False:
+    import platform
+    GITHUB_ACTIONS_WINDOWS = platform.system() == 'Windows'
 
 class DummyTransformer:
     def __getitem__(self, bow):

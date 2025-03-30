@@ -327,14 +327,15 @@ docs_testenv = core_testenv + distributed_env + visdom_req + [
 #
 # see https://github.com/piskvorky/gensim/pull/3535
 #
-NUMPY_STR = 'numpy >= 1.18.5, < 2.0'
+#NUMPY_STR = 'numpy >= 1.18.5, < 2.0'
+NUMPY_STR = 'numpy >= 2.0, < 2.3'
 
 install_requires = [
     NUMPY_STR,
     #
     # scipy 1.14.0 and onwards removes deprecated sparsetools submodule
     #
-    'scipy >= 1.7.0, <1.14.0',
+    'scipy >= 1.7.0, <1.16.0',
     'smart_open >= 1.8.1',
 ]
 

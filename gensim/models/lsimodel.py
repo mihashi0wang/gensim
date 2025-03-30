@@ -66,7 +66,7 @@ import time
 import numpy as np
 import scipy.linalg
 import scipy.sparse
-from scipy.sparse import sparsetools
+from scipy.sparse._sparsetools import _sparsetools as sparsetools
 
 from gensim import interfaces, matutils, utils
 from gensim.models import basemodel

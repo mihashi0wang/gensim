@@ -25,6 +25,10 @@ from gensim.test import basetmtests
 from gensim.test.utils import datapath, get_tmpfile, common_texts
 
 GITHUB_ACTIONS_WINDOWS = os.environ.get('RUNNER_OS') == 'Windows'
+# fix without github
+if GITHUB_ACTIONS_WINDOWS is False:
+    import platform
+    GITHUB_ACTIONS_WINDOWS = platform.system() == 'Windows'
 
 dictionary = Dictionary(common_texts)
 corpus = [dictionary.doc2bow(text) for text in common_texts]
