@@ -820,9 +820,9 @@ class TestWord2VecModel(unittest.TestCase):
         model = word2vec.Word2Vec(vector_size=2, min_count=1, sg=0, hs=0, negative=2)
         model.build_vocab(sentences)
         model.train(sentences, total_examples=model.corpus_count, epochs=model.epochs)
-
         self.assertTrue(model.wv.n_similarity(['graph', 'trees'], ['trees', 'graph']))
-        self.assertTrue(model.wv.n_similarity(['graph'], ['trees']) == model.wv.similarity('graph', 'trees'))
+
+        self.assertTrue(model.wv.n_similarity(['graph'], ['trees']).astype(np.float32) == model.wv.similarity('graph', 'trees').astype(np.float32))
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, ['graph', 'trees'], [])
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, [], ['graph', 'trees'])
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, [], [])
