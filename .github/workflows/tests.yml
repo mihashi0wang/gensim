@@ -47,6 +47,7 @@ jobs:
       - name: Build documentation
         run: |
           python setup.py build_ext --inplace
+          pip install nmslib
           make -C docs/src clean html
 
   tests:
