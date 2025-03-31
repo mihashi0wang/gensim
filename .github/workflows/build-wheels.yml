@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, windows-2019, macos-latest]
+        os: [ubuntu-22.04, windows-2022, macos-latest]
     steps:
 
       - name: Checkout
@@ -102,7 +102,7 @@ jobs:
       # https://github.com/RaRe-Technologies/gensim/issues/3489
       #
       - name: Install newest numpy (windows py3.10 only)
-        if: ${{ (matrix.os == 'windows-2019') && (matrix.python == '3.10') }}
+        if: ${{ (matrix.os == 'windows-2022') && (matrix.python == '3.10') }}
         run: |
           python -m pip uninstall --yes oldest-supported-numpy
           python -m pip install --upgrade numpy
