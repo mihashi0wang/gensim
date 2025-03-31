@@ -1,3 +1,11 @@
+mihashi0wang/gensim
+==================================
+
+[![Build Status](https://github.com/mihashi0wang/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/mihashi0wang/gensim/actions)
+[![GitHub release](https://img.shields.io/github/release/mihashi0wang/gensim.svg?maxAge=3600)](https://github.com/mihashi0wang/gensim/releases)
+
+
+
 gensim – Topic Modelling in Python
 ==================================
 
@@ -7,8 +15,8 @@ Google because of Github's proxying issues. See:
 https://github.com/RaRe-Technologies/gensim/issues/2805
 -->
 
-[![Build Status](https://github.com/mihashi0wang/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/mihashi0wang/gensim/actions)
-[![GitHub release](https://img.shields.io/github/release/mihashi0wang/gensim.svg?maxAge=3600)](https://github.com/mihashi0wang/gensim/releases)
+[![Build Status](https://github.com/RaRe-Technologies/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/RaRe-Technologies/gensim/actions)
+[![GitHub release](https://img.shields.io/github/release/rare-technologies/gensim.svg?maxAge=3600)](https://github.com/RaRe-Technologies/gensim/releases)
 [![Downloads](https://img.shields.io/pypi/dm/gensim?color=blue)](https://pepy.tech/project/gensim/)
 [![DOI](https://zenodo.org/badge/DOI/10.13140/2.1.2393.1847.svg)](https://doi.org/10.13140/2.1.2393.1847)
 [![Mailing List](https://img.shields.io/badge/-Mailing%20List-blue.svg)](https://groups.google.com/g/gensim)
