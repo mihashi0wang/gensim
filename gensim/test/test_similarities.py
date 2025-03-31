@@ -554,7 +554,6 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
     def test_word2vec(self):
         model = word2vec.Word2Vec(TEXTS, min_count=1)
         index = self.indexer(model, 10)
-        
         self.assertVectorIsSimilarToItself(model.wv, index)
         self.assertApproxNeighborsMatchExact(model.wv, model.wv, index)
         self.assertIndexSaved(index)
@@ -572,7 +571,7 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
 
         model = FastText(LeeReader(datapath('lee.cor')), bucket=5000)
         index = self.indexer(model, 10)
-        print(index,"raw")
+
         self.assertVectorIsSimilarToItself(model.wv, index)
         self.assertApproxNeighborsMatchExact(model.wv, model.wv, index)
         self.assertIndexSaved(index)

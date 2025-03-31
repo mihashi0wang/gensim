@@ -788,7 +788,7 @@ class LdaModel(interfaces.TransformationABC, basemodel.BaseTopicModel):
 
         """
         N = float(len(gammat))
-        
+
         logphat = sum(dirichlet_expectation(gamma) for gamma in gammat) / N
         assert logphat.dtype == self.dtype
 
@@ -797,7 +797,7 @@ class LdaModel(interfaces.TransformationABC, basemodel.BaseTopicModel):
 
         try:
             assert self.alpha.dtype == self.dtype
-        except:
+        except AssertionError:
             self.alpha = self.alpha.astype(self.dtype)
             assert self.alpha.dtype == self.dtype
         return self.alpha
@@ -826,7 +826,7 @@ class LdaModel(interfaces.TransformationABC, basemodel.BaseTopicModel):
 
         try:
             assert self.eta.dtype == self.dtype
-        except:
+        except AssertionError:
             self.eta = self.eta.astype(self.dtype)
             assert self.eta.dtype == self.dtype
         return self.eta

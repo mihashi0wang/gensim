@@ -825,7 +825,7 @@ class TestWord2VecModel(unittest.TestCase):
         a = model.wv.n_similarity(['graph'], ['trees']).astype(np.float32)
         b = model.wv.similarity('graph', 'trees').astype(np.float32)
 
-        self.assertTrue(a==b)
+        self.assertTrue(a == b)
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, ['graph', 'trees'], [])
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, [], ['graph', 'trees'])
         self.assertRaises(ZeroDivisionError, model.wv.n_similarity, [], [])
