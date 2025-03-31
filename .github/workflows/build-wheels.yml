@@ -71,10 +71,10 @@ jobs:
           - {python: '3.12', os: ubuntu-22.04}
           - {python: '3.13', os: ubuntu-22.04}
 
-          - {python: '3.10', os: windows-2019}
-          - {python: '3.11', os: windows-2019}
-          - {python: '3.12', os: windows-2019}
-          - {python: '3.13', os: windows-2019}
+          - {python: '3.10', os: windows-2022}
+          - {python: '3.11', os: windows-2022}
+          - {python: '3.12', os: windows-2022}
+          - {python: '3.13', os: windows-2022}
 
     runs-on: ${{ matrix.os }}
     steps:
