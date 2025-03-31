@@ -384,7 +384,7 @@ setup(
     ],
 
     test_suite="gensim.test",
-    python_requires='>=3.8',
+    python_requires='>=3.10',
     install_requires=install_requires,
     tests_require=linux_testenv,
     extras_require={
