@@ -1,4 +1,4 @@
-mihashi0wang/gensim
+mihashi0wang/gensim - Provide users with modernized dependency support while maintaining functional consistency with the original project.
 ==================================
 
 [![Build Status](https://github.com/mihashi0wang/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/mihashi0wang/gensim/actions)
