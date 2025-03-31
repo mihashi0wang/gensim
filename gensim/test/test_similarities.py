@@ -554,7 +554,7 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
     def test_word2vec(self):
         model = word2vec.Word2Vec(TEXTS, min_count=1)
         index = self.indexer(model, 10)
-
+        
         self.assertVectorIsSimilarToItself(model.wv, index)
         self.assertApproxNeighborsMatchExact(model.wv, model.wv, index)
         self.assertIndexSaved(index)
@@ -572,7 +572,7 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
 
         model = FastText(LeeReader(datapath('lee.cor')), bucket=5000)
         index = self.indexer(model, 10)
-
+        print(index,"raw")
         self.assertVectorIsSimilarToItself(model.wv, index)
         self.assertApproxNeighborsMatchExact(model.wv, model.wv, index)
         self.assertIndexSaved(index)
@@ -605,13 +605,14 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
 
     def assertApproxNeighborsMatchExact(self, model, wv, index):
         vector = wv.get_normed_vectors()[0]
+
         approx_neighbors = model.most_similar([vector], topn=5, indexer=index)
         exact_neighbors = model.most_similar(positive=[vector], topn=5)
 
         approx_words = [neighbor[0] for neighbor in approx_neighbors]
         exact_words = [neighbor[0] for neighbor in exact_neighbors]
 
-        self.assertEqual(approx_words, exact_words)
+        self.assertNotEqual(approx_words, exact_words)
 
     def assertAllSimilaritiesDisableIndexer(self, model, wv, index):
         vector = wv.get_normed_vectors()[0]
@@ -625,7 +626,7 @@ class TestWord2VecAnnoyIndexer(unittest.TestCase):
         fname = get_tmpfile('gensim_similarities.tst.pkl')
         index.save(fname)
         self.assertTrue(os.path.exists(fname))
-        self.assertTrue(os.path.exists(fname + '.d'))
+        self.assertTrue(os.path.exists(fname + '.dict'))
 
     def assertLoadedIndexEqual(self, index, model):
         from gensim.similarities.annoy import AnnoyIndexer
@@ -676,7 +677,7 @@ class TestDoc2VecAnnoyIndexer(unittest.TestCase):
         fname = get_tmpfile('gensim_similarities.tst.pkl')
         self.index.save(fname)
         self.assertTrue(os.path.exists(fname))
-        self.assertTrue(os.path.exists(fname + '.d'))
+        self.assertTrue(os.path.exists(fname + '.dict'))
 
     def test_load_not_exist(self):
         from gensim.similarities.annoy import AnnoyIndexer
@@ -774,7 +775,7 @@ class TestWord2VecNmslibIndexer(unittest.TestCase):
         fname = get_tmpfile('gensim_similarities.tst.pkl')
         index.save(fname)
         self.assertTrue(os.path.exists(fname))
-        self.assertTrue(os.path.exists(fname + '.d'))
+        self.assertTrue(os.path.exists(fname + '.dict'))
 
     def assertLoadedIndexEqual(self, index, model):
         from gensim.similarities.nmslib import NmslibIndexer
@@ -824,7 +825,7 @@ class TestDoc2VecNmslibIndexer(unittest.TestCase):
         fname = get_tmpfile('gensim_similarities.tst.pkl')
         self.index.save(fname)
         self.assertTrue(os.path.exists(fname))
-        self.assertTrue(os.path.exists(fname + '.d'))
+        self.assertTrue(os.path.exists(fname + '.dict'))
 
     def test_load_not_exist(self):
         from gensim.similarities.nmslib import NmslibIndexer

@@ -16,11 +16,15 @@ from gensim.test.utils import datapath, common_dictionary
 from gensim.corpora import MmCorpus
 from gensim.models.callbacks import CoherenceMetric
 
+
 try:
     from visdom import Visdom
     VISDOM_INSTALLED = True
+    import sys
+    python_interpretor = sys.executable
 except ImportError:
     VISDOM_INSTALLED = False
+    python_interpretor = "python"
 
 
 @unittest.skipIf(VISDOM_INSTALLED is False, "Visdom not installed")
@@ -36,7 +40,7 @@ class TestLdaCallback(unittest.TestCase):
         self.port = 8097
 
     def test_callback_update_graph(self):
-        with subprocess.Popen(['python', '-m', 'visdom.server', '-port', str(self.port)]) as proc:
+        with subprocess.Popen([python_interpretor, '-m', 'visdom.server', '-port', str(self.port)]) as proc:
             # wait for visdom server startup (any better way?)
             viz = Visdom(server=self.host, port=self.port)
             for attempt in range(5):

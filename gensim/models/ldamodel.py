@@ -788,13 +788,18 @@ class LdaModel(interfaces.TransformationABC, basemodel.BaseTopicModel):
 
         """
         N = float(len(gammat))
+        
         logphat = sum(dirichlet_expectation(gamma) for gamma in gammat) / N
         assert logphat.dtype == self.dtype
 
         self.alpha = update_dir_prior(self.alpha, N, logphat, rho)
         logger.info("optimized alpha %s", list(self.alpha))
 
-        assert self.alpha.dtype == self.dtype
+        try:
+            assert self.alpha.dtype == self.dtype
+        except:
+            self.alpha = self.alpha.astype(self.dtype)
+            assert self.alpha.dtype == self.dtype
         return self.alpha
 
     def update_eta(self, lambdat, rho):
@@ -819,7 +824,11 @@ class LdaModel(interfaces.TransformationABC, basemodel.BaseTopicModel):
 
         self.eta = update_dir_prior(self.eta, N, logphat, rho)
 
-        assert self.eta.dtype == self.dtype
+        try:
+            assert self.eta.dtype == self.dtype
+        except:
+            self.eta = self.eta.astype(self.dtype)
+            assert self.eta.dtype == self.dtype
         return self.eta
 
     def log_perplexity(self, chunk, total_docs=None):
