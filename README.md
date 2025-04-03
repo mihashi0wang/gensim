@@ -2,7 +2,7 @@ mihashi0wang/gensim
 ==================================
 
 [![Build Status](https://github.com/mihashi0wang/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/mihashi0wang/gensim/actions)
-[![GitHub release](https://img.shields.io/github/release/mihashi0wang/gensim.svg?maxAge=3600)](https://github.com/mihashi0wang/gensim/releases)
+[![GitHub release](https://img.shields.io/github/release/mihashi0wang/gensim.svg)](https://github.com/mihashi0wang/gensim/releases)
 
 Provide users with modernized dependency support while maintaining functional consistency with the original project.
 
